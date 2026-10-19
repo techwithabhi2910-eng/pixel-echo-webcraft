@@ -12,10 +12,10 @@ export interface Invoice {
   category: string;
   description: string;
   status: Status;
-  attachment?: string;
-  decisionNote?: string;
+  attachment?: string | undefined;
+  decisionNote?: string | undefined;
   createdAt: string;
-  sample?: boolean;
+  sample?: boolean | undefined;
 }
 
 export interface AuditEvent {

@@ -21,13 +21,13 @@ const empty = { vendor: "", number: "", date: "", amount: "", category: "", desc
 function AddInvoice() {
   const [f, setF] = useState(empty);
   const [file, setFile] = useState<File | null>(null);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"vendor"|"number"|"date"|"amount"|"category"|"description"|"file", string>>>({});
   const [result, setResult] = useState<{ number: string; risk: RiskResult } | null>(null);
   const set = (k: keyof typeof empty) => (e: { target: { value: string } }) => setF({ ...f, [k]: e.target.value });
 
   function submit(e: FormEvent) {
     e.preventDefault();
-    const err: Record<string, string> = {};
+    const err: Partial<Record<"vendor"|"number"|"date"|"amount"|"category"|"description"|"file", string>> = {};
     if (!f.vendor.trim()) err.vendor = "Vendor is required";
     if (!f.number.trim()) err.number = "Invoice number is required";
     if (!f.date) err.date = "Date is required";
