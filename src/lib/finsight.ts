@@ -96,7 +96,7 @@ function seed(): { invoices: Invoice[]; audit: AuditEvent[] } {
   const audit: AuditEvent[] = invoices.map((inv, i) => ({
     id: `a${i + 1}`, timestamp: inv.createdAt, actor: "System (sample data)", type: "INVOICE_CREATED", invoiceRef: inv.number, outcome: "Sample invoice loaded",
   }));
-  return { invoices, audit };
+  return { invoices, audit: audit.reverse() };
 }
 
 // ---------- Store (localStorage) ----------
