@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture
+- All app state lives in `src/lib/finsight.ts` (localStorage store + pure `analyzeRisk` rules); pages read via `useStore()`. Why: brief requires browser-only persistence, no backend.
+- Every page wraps content in `AppShell` from `src/components/fs.tsx`. Why: shared sidebar nav.

@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AddInvoiceRouteImport } from './routes/add-invoice'
+import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as AuditRouteImport } from './routes/audit'
+import { Route as InvoicesRouteImport } from './routes/invoices'
+import { Route as RiskRouteImport } from './routes/risk'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddInvoiceRoute = AddInvoiceRouteImport.update({
+  id: '/add-invoice',
+  path: '/add-invoice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApprovalsRoute = ApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvoicesRoute = InvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskRoute = RiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/add-invoice': typeof AddInvoiceRoute
+  '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
+  '/invoices': typeof InvoicesRoute
+  '/risk': typeof RiskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/add-invoice': typeof AddInvoiceRoute
+  '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
+  '/invoices': typeof InvoicesRoute
+  '/risk': typeof RiskRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/add-invoice': typeof AddInvoiceRoute
+  '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
+  '/invoices': typeof InvoicesRoute
+  '/risk': typeof RiskRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/add-invoice'
+    | '/approvals'
+    | '/audit'
+    | '/invoices'
+    | '/risk'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/add-invoice'
+    | '/approvals'
+    | '/audit'
+    | '/invoices'
+    | '/risk'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/add-invoice'
+    | '/approvals'
+    | '/audit'
+    | '/invoices'
+    | '/risk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AddInvoiceRoute: typeof AddInvoiceRoute
+  ApprovalsRoute: typeof ApprovalsRoute
+  AuditRoute: typeof AuditRoute
+  InvoicesRoute: typeof InvoicesRoute
+  RiskRoute: typeof RiskRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/add-invoice': {
+      id: '/add-invoice'
+      path: '/add-invoice'
+      fullPath: '/add-invoice'
+      preLoaderRoute: typeof AddInvoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/approvals': {
+      id: '/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/invoices': {
+      id: '/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof InvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk': {
+      id: '/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AddInvoiceRoute: AddInvoiceRoute,
+  ApprovalsRoute: ApprovalsRoute,
+  AuditRoute: AuditRoute,
+  InvoicesRoute: InvoicesRoute,
+  RiskRoute: RiskRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
